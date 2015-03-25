@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// sets up struct for the rest of the program
 struct Person {
   char *name;
   int age;
@@ -10,6 +11,7 @@ struct Person {
   int weight;
 };
 
+// I still need to figure out how this function is a pointer
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
   struct Person *who = malloc(sizeof(struct Person));
