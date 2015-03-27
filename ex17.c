@@ -150,13 +150,16 @@ void Database_create(struct Connection *conn)
     struct Address addr = {.id = i, .set = 0};
     // then just assign it
     // set the actual row in the database to the value of the local struct
+    // all other rows are set to 0
     conn->db->rows[i] = addr;
   }
 }
 
 void Database_set(struct Connection *conn, int id, const char *name, 
                   const char *email)
-{
+{ 
+  // get the address of (id element of rows, which is in db, which is in 
+  // conn)
   struct Address *addr = &conn->db->rows[id];
   if(addr->set) die("Already set, delete it first");
 
