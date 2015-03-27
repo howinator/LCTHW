@@ -94,7 +94,11 @@ int main(int argc, char *argv[])
   for(i = 0; i < count; i++) {
     numbers[i] = atoi(inputs[i]);
   }
-
+  
+  // we're passing it three different sort functions as the third argument
+  // where C just finds these functions and creates a pointer to their
+  // address in memory. They can then be used without actually knowing what
+  // the functions are
   test_sorting(numbers, count, sorted_order);
   test_sorting(numbers, count, reverse_order);
   test_sorting(numbers, count, strange_order);
