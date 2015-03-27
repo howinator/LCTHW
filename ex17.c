@@ -139,14 +139,17 @@ void Database_write(struct Connection *conn)
   if(rc == -1) die("Cannot flush database.");
 }
 
+// create and initialize database
 void Database_create(struct Connection *conn)
 {
   int i = 0;
 
   for(i = 0; i < MAX_ROWS; i++) {
     // make a prototype to intialize it
+    // this is just a way to initialize members of a struct
     struct Address addr = {.id = i, .set = 0};
     // then just assign it
+    // set the actual row in the database to the value of the local struct
     conn->db->rows[i] = addr;
   }
 }
