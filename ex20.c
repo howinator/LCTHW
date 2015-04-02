@@ -15,7 +15,7 @@ void test_debug()
 
 void test_log_err()
 {
-  log_err("I believe everuthing is broken.");
+  log_err("I believe everything is broken.");
   log_err("There are %d problems in %s.", 0, "space");
 }
 
@@ -31,7 +31,7 @@ void test_log_info()
   log_info("It happened %f times today.", 1.3f);
 }
 
-int test_check(char *filename)
+int test_check(char *file_name)
 {
   FILE *input = NULL;
   char *block = NULL;
@@ -52,7 +52,7 @@ error:
   return -1;
 }
 
-int test_sentinel(int code);
+int test_sentinel(int code)
 {
   char *temp = malloc(100);
   check_mem(temp);
