@@ -1,4 +1,4 @@
 LCTHW
 =====
 
-LEarning C the Hard Way by Zed Shaw
+Learning C the Hard Way by Zed Shaw
