@@ -9,19 +9,20 @@ int Monster_attack(void *self, int damage)
 {
   Monster *monster = self;
 
-  printf("You attack %s!\n", monster->(description));
+  printf("You attack %s!\n", monster->_(description));
 
   monster->hit_points -= damage;
 
   if(monster->hit_points > 0) {
     printf("It is still alive.\n");
+    return 0;
   } else {
     printf("It is dead!\n");
     return 1;
   }
 }
 
-int Monster_init(void *seld)
+int Monster_init(void *self)
 {
   Monster *monster = self;
   monster->hit_points = 10;
@@ -29,8 +30,8 @@ int Monster_init(void *seld)
 }
 
 Object MonsterProto = {
-  .init = Monster_init
-  .attack = Monster_attak
+  .init = Monster_init,
+  .attack = Monster_attack
 };
 
 void *Room_move(void *self, Direction direction)
@@ -61,7 +62,7 @@ void *Room_move(void *self, Direction direction)
   return next;
 }
 
-int Room_attack(void *seld, int damage)
+int Room_attack(void *self, int damage)
 {
   Room *room = self;
   Monster *monster = room->bad_guy;
@@ -133,13 +134,13 @@ int Map_init(void *self)
   return 1;
 }
 
-Obect MapProto = {
+Object MapProto = {
   .init = Map_init,
   .move = Map_move,
-  .attacl = Map_attack
+  .attack = Map_attack
 };
 
-int progress_input(Map *game)
+int process_input(Map *game)
 {
   printf("\n> ");
 
@@ -148,7 +149,7 @@ int progress_input(Map *game)
 
   int damage = rand() % 4;
 
-  seitch(ch) {
+  switch(ch) {
     case -1:
       printf("Giving up? You suck.\n");
       return 0;
@@ -183,7 +184,7 @@ int progress_input(Map *game)
       break;
 
     default:
-      printf("What?: %d\n");
+      printf("What?: %d\n", ch);
   }
 
   return 1;
