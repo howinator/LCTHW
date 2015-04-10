@@ -15,7 +15,7 @@ const char *EYE_COLOR_NAMES[] = {
 typedef struct Person {
   int age;
   char first_name[MAX_DATA];
-  char last_name[MAX_DAYA];
+  char last_name[MAX_DATA];
   EyeColor eyes;
   float income;
 } Person;
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
   check(in != NULL, "Failed to read last name.");
   
   printf("How old are you? ");
-  int rc = fscan(stdin, "%d", &you.age);
+  int rc = fscanf(stdin, "%d", &you.age);
   check(rc > 0, "You have to enter a number.");
 
   printf("What color are your eyes: \n");
